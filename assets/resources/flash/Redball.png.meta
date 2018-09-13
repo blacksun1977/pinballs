@@ -1,0 +1,30 @@
+{
+  "ver": "2.0.0",
+  "uuid": "ba742591-e5fc-4064-9a6d-e015d806b811",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "Redball": {
+      "ver": "1.0.3",
+      "uuid": "c31bb713-2779-4e6b-8ae8-28f2544d0d23",
+      "rawTextureUuid": "ba742591-e5fc-4064-9a6d-e015d806b811",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 1,
+      "offsetY": 0,
+      "trimX": 9,
+      "trimY": 6,
+      "width": 31,
+      "height": 32,
+      "rawWidth": 47,
+      "rawHeight": 44,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

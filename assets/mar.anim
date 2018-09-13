@@ -1,0 +1,75 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "mar",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.12,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "9e9444da-f530-42c8-a80b-77385d65e539"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "eb81d0f2-2c16-435d-baa1-f4ecdfaed24e"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "9aa9bf3b-c96f-4e1f-a79f-2ab6b3e892b2"
+            }
+          }
+        ]
+      }
+    },
+    "props": {
+      "width": [
+        {
+          "frame": 0,
+          "value": 100
+        },
+        {
+          "frame": 0.05,
+          "value": 100
+        },
+        {
+          "frame": 0.05,
+          "value": 100
+        },
+        {
+          "frame": 0.1,
+          "value": 100
+        }
+      ],
+      "height": [
+        {
+          "frame": 0,
+          "value": 100
+        },
+        {
+          "frame": 0.05,
+          "value": 100
+        },
+        {
+          "frame": 0.05,
+          "value": 100
+        },
+        {
+          "frame": 0.1,
+          "value": 100
+        }
+      ]
+    }
+  },
+  "events": []
+}

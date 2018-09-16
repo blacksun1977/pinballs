@@ -10,8 +10,10 @@ cc.Class({
             default:null,
             url: cc.AudioClip,
         },
+       
     },
     onLoad () {
+       
         if(!cc.hscoreball){
             cc.hscoreball={} 
         }
@@ -29,6 +31,7 @@ cc.Class({
             this.mianban.active=true
         }
         this.wxinit()
+        console.log("免费双倍次数"+Global.DoubleCount);
     },
     start () {
         cc.audioEngine.play(this.Mp3,false)
@@ -148,6 +151,7 @@ cc.Class({
         }
     },
     onstart:function(){
+       
         this.bgcolor.active=true
         this.node.active=false
         this.mianban.active=true

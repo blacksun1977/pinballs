@@ -33,6 +33,7 @@ cc.Class({
         },
     },
     ongirl:function(){
+        
         var self=this
         var action=cc.spawn(cc.moveTo(5,-150,474),cc.callFunc(function(){
             if(self.Animas[9].node.active){
@@ -112,6 +113,8 @@ cc.Class({
             }
     },
     onLoad () {
+       
+        //console.log("st doulecount is "+node.DoubleCount);
        cc.director.getPhysicsManager().enabled=true
        //cc.audioEngine.play(this.Mp3[0],false)
        cc.pinball.releaseA=-1
@@ -236,37 +239,70 @@ cc.Class({
     },
     onDoubleClick:function(touch){
         var self=this
-        touch.target.parent.parent.active=false
-        if(!window.wx){
-            return;
-        }
-        if(window.wx){
-            wx.shareAppMessage({
-                title:"这个弹球很魔性，停不下来！慎入！",
-                imageUrl:"https://car-1252852095.file.myqcloud.com/tanqiu/tanqiuicon.png",
-                success:function(err){
-                    if(err.errMsg=="shareAppMessage:ok"){
-                       cc.pinball.dtime=new Date().getTime()
-                       cc.pinball.timecount=30
-                       cc.pinball.interval=setInterval(function(){
-                           if(self.x2str){
-                            self.x2str.string=cc.pinball.timecount
-                            cc.pinball.timecount--
-                            if(cc.pinball.timecount<0){
-                                cc.pinball.dtime=null
-                                self.x2str.string="X2"
-                                self.x2node.children[0].color= new cc.Color(255,255,255)
-                                cc.pinball.timecount=0
-                                clearInterval(cc.pinball.interval)
-                                return
-                            }
-                           }
-                        },1000)                           
-                    }
+        Global.DoubleCount--;
+        console.log("免费双倍次数"+Global.DoubleCount);
+       
+        if(Global.DoubleCount>=0)
+        {
+            touch.target.parent.parent.active=false
+            cc.log("不分享加倍开始“");
+            self.x2node.children[0].color= new cc.Color(255,255,255);
+            cc.pinball.dtime=new Date().getTime()
+            cc.pinball.timecount=30
+            cc.pinball.interval=setInterval(function(){
+                if(self.x2str){
+                 self.x2str.string=cc.pinball.timecount
+                 cc.pinball.timecount--
+                 if(cc.pinball.timecount<0){
+                     cc.pinball.dtime=null
+                     self.x2str.string="X2"
+                     self.x2node.children[0].color= new cc.Color(255,255,255)
+                     cc.pinball.timecount=0
+                     clearInterval(cc.pinball.interval)
+                     return
+                 }
                 }
-            })
-
+             },1000)      
         }
+        else
+        {
+            
+            if(!window.wx){
+                cc.log("非微信环境下 所以加倍停止");
+                return;
+            }
+            if(window.wx){
+                wx.shareAppMessage({
+                    title:"这个弹球很魔性，停不下来！慎入！",
+                    imageUrl:"https://car-1252852095.file.myqcloud.com/tanqiu/tanqiuicon.png",
+                    success:function(err){
+                        if(err.errMsg=="shareAppMessage:ok"){
+                           cc.pinball.dtime=new Date().getTime()
+                           cc.pinball.timecount=30
+                           cc.pinball.interval=setInterval(function(){
+                               if(self.x2str){
+                                self.x2str.string=cc.pinball.timecount
+                                cc.pinball.timecount--
+                                if(cc.pinball.timecount<0){
+                                    cc.pinball.dtime=null
+                                    self.x2str.string="X2"
+                                    self.x2node.children[0].color= new cc.Color(255,255,255)
+                                    cc.pinball.timecount=0
+                                    clearInterval(cc.pinball.interval)
+                                    return
+                                }
+                               }
+                            },1000)                           
+                        }
+                    }
+                })
+    
+            }
+        }
+
+       
+       
+        
     },
 
     onKeyDownB: function (event) {

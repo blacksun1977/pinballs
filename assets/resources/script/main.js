@@ -63,8 +63,8 @@ cc.Class({
         wx.onShareAppMessage(function () {
             // 用户点击了“转发”按钮
             return {
-                title:"这个弹球很魔性，停不下来！慎入！",
-                imageUrl:"https://car-1252852095.file.myqcloud.com/tanqiu/tanqiuicon.png",
+                title:Global.ShareTitle,
+                imageUrl:Global.SharePic,
             }
           })
         var str=""
@@ -107,29 +107,31 @@ cc.Class({
         wx.login({
             success:function(res){
                 rcode=res.code
-                wx.getUserInfo({
-                    openIdList: ['selfOpenId','ownAP0b9qt6AzvYOSWOX8VX8KMq0'],
-                    success:function(res){
+                //感觉没有用到呀 暂时取消试试
+                // wx.getUserInfo({
+                //     openIdList: ['selfOpenId','ownAP0b9qt6AzvYOSWOX8VX8KMq0'],
+                //     success:function(res){
 
-                    },
-                    fail:function(){
-                        if(ver>=2060){
-                            self.ctxt.string="用户授权失败,请重新授权"
-                            bottoncreate()
-                        }else{wx.openSetting({
-                            success:function(res){                                          
-                                var temp=res.authSetting['scope.userInfo','scope.writePhotosAlbum']
-                                if(temp){
-                                    wx.getUserInfo({
-                                        success:function(res){
+                //     },
+                //     fail:function(){
+                //         if(ver>=2060){
+                //             self.ctxt.string="用户授权失败,请重新授权"
+                //             bottoncreate()
+                //         }else{wx.openSetting({
+                //             success:function(res){                                          
+                //                 var temp=res.authSetting['scope.userInfo','scope.writePhotosAlbum']
+                //                 if(temp){
+                //                     
+                //                     // wx.getUserInfo({
+                //                     //     success:function(res){
         
-                                        }
-                                    })
-                                }
-                            }
-                        })}
-                    }
-                  }) 
+                //                     //     }
+                //                     // })
+                //                 }
+                //             }
+                //         })}
+                //     }
+                //   }) 
             }
         })    
     },
@@ -139,8 +141,8 @@ cc.Class({
         }
         if(window.wx){
             wx.shareAppMessage({
-                title:"这个弹球很魔性，停不下来！慎入！",
-                imageUrl:"https://car-1252852095.file.myqcloud.com/tanqiu/tanqiuicon.png",
+                title:Global.ShareTitle,
+                imageUrl:Global.SharePic,
                 success:function(err){
                     if(err.errMsg=="shareAppMessage:ok"){
 

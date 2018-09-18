@@ -273,8 +273,8 @@ cc.Class({
             }
             if(window.wx){
                 wx.shareAppMessage({
-                    title:"这个弹球很魔性，停不下来！慎入！",
-                    imageUrl:"https://car-1252852095.file.myqcloud.com/tanqiu/tanqiuicon.png",
+                    title:Global.ShareTitle,
+                    imageUrl:Global.SharePic,
                     success:function(err){
                         if(err.errMsg=="shareAppMessage:ok"){
                            cc.pinball.dtime=new Date().getTime()
@@ -369,8 +369,8 @@ cc.Class({
         }
         if(window.wx){
             wx.shareAppMessage({
-                title:"这个弹球很魔性，停不下来！慎入！",
-                imageUrl:"https://car-1252852095.file.myqcloud.com/tanqiu/tanqiuicon.png",
+                title:Global.ShareTitle,
+                imageUrl:Global.SharePic,
                 success:function(err){
                     if(err.errMsg=="shareAppMessage:ok"){
                         if(cc.pinball.Hcount==0){
@@ -393,8 +393,8 @@ cc.Class({
         }
         if(window.wx){
             wx.shareAppMessage({
-                title:"这个弹球很魔性，停不下来！慎入！",
-                imageUrl:"https://car-1252852095.file.myqcloud.com/tanqiu/tanqiuicon.png",
+                title:Global.ShareTitle,
+                imageUrl:Global.SharePic,
                 success:function(err){
                     if(err.errMsg=="shareAppMessage:ok"){
                         if(cc.pinball.Hcount==0){

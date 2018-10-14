@@ -69,6 +69,21 @@ cc.Class({
     },
     start () {
         this.Collider=null
+        // console.log(cc.find("Canvas"));
+        // var v = cc.find("Canvas/view")
+        //         if(v)
+        //         {
+        //             v.active=true;
+        //             if (CC_WECHATGAME) {
+        //                 window.wx.postMessage({// 发消息给子域
+        //                     messageType: 4,
+        //                     MAIN_MENU_NUM: "x1"
+        //                 });
+        //                 cc.log("post msg ok");
+        //             } else {
+        //                 cc.log("获取横向展示排行榜数据。x1");
+        //             }
+        //         }
 
     },
     uppballtype1:function(){
@@ -577,23 +592,14 @@ cc.Class({
             //小球落袋后 暂时调整为结束 后期需要加数量逻辑 2018-09-12 cuip
                 this.submit()
                 cc.audioEngine.play(this.Mp3[9],false)
-                this.node.active=false
-                this.node.parent.active=false
-                this.gameover.active=true
-                this.gameover.position=cc.v2(0,750)
-                this.gameover.runAction(cc.moveTo(1,0,0))
-            // if(cc.pinball.Hcount>=0){
-            //     this.submit()
-            //     cc.director.loadScene("game")
-            // }else{
-            //     this.submit()
-            //     cc.audioEngine.play(this.Mp3[9],false)
-            //     this.node.active=false
-            //     this.node.parent.active=false
-            //     this.gameover.active=true
-            //     this.gameover.position=cc.v2(0,750)
-            //     this.gameover.runAction(cc.moveTo(1,0,0))
-            // }
+                // this.node.active=false
+                // this.node.parent.active=false
+                // this.gameover.active=true
+                // this.gameover.position=cc.v2(0,750)
+                // this.gameover.runAction(cc.moveTo(1,0,0))
+                cc.director.loadScene("GameOverUI");
+                
+            
         }else if(stag==999&&stag!=cc.pinball.currentTag){
             cc.audioEngine.play(this.Mp3[6],false)
             var tem=selfCollider.body.getWorldCenter()
@@ -691,12 +697,15 @@ cc.Class({
         cc.pinball.currentTag=stag
     },
     submit:function(){
-        if(window.wx){
+        
+        if (CC_WECHATGAME) {
             window.wx.postMessage({
-                messageType: 1,
-                KEY1: "x1",
-                score:cc.pinball.score,
+                messageType: 3,
+                MAIN_MENU_NUM: "x1",
+                score: cc.pinball.score,
             });
+        } else {
+            cc.log("提交得分: x1 : " + cc.pinball.score)
         }
     },
     jiaqiu:function(){

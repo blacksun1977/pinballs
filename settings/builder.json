@@ -25,8 +25,8 @@
     "REMOTE_SERVER_ROOT": "",
     "orientation": "portrait"
   },
-  "renderMode": "0",
-  "startScene": "72179454-3bee-4985-962e-2438f4cdc561",
+  "renderMode": "1",
+  "startScene": "e1196fe9-9a2d-414f-b957-8d62e18acaae",
   "title": "pinballs",
   "webOrientation": "auto",
   "wechatgame": {
@@ -34,7 +34,7 @@
     "appid": "wxafe4cc53fd6aa501",
     "isSubdomain": false,
     "orientation": "portrait",
-    "subContext": "newcarsub"
+    "subContext": "SubGame"
   },
   "xxteaKey": "c7474d38-0091-4f",
   "zipCompressJs": true

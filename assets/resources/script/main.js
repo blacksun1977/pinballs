@@ -39,10 +39,14 @@ cc.Class({
     paihang:function(){
        if(window.wx){
            this.view.active=true
-           window.wx.postMessage({
-             messageType: 2,
-             KEY1: "x1",
-          });
+        //    window.wx.postMessage({
+        //      messageType: 2,
+        //      KEY1: "x1",
+        //   });
+        window.wx.postMessage({
+            messageType: 1,
+            MAIN_MENU_NUM: "x1"
+        });
         }
     },
     wxinit:function(){

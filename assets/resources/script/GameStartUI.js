@@ -121,50 +121,48 @@ cc.Class({
         cc.director.loadScene("game");
     },
     onAdd: function () {
-       let query =wx.getLaunchOptionsSync().query;
-       let cs ="0";
-       let openid="";
-       if(query)
-       {
-        cs = query.cs;
-       }
+        let query = wx.getLaunchOptionsSync().query;
+        let cs = "0";
+        let openid = "";
+        if (query) {
+            cs = query.cs;
+        }
         const db = wx.cloud.database();
-       // 获取opneid
+        // 获取opneid
 
-       wx.cloud.callFunction({
-        // 要调用的云函数名称
-        name: 'login',
-        // 传递给云函数的event参数
-        data: {}
-      }).then(res => {
-        cc.log(res);
-        openid = res.result.userInfo.openId;
-        
-      })
-       // 判断数据库集合中是否有该用户的记录
-       db.collection('user_login_record').where({
-        _openid: openid
-      })
-      .get()
-      .then(res=>{
-          cc.log(res);
-        cc.log(res.data.length);
-        if(res.data.length==0)
-        {
-             //add
-            db.collection('user_login_record').add({
-                // data 字段表示需新增的 JSON 数据
-                data: {
-                    ComeSource:cs,
-                    ComeTime:new Date()
+        wx.cloud.callFunction({
+            // 要调用的云函数名称
+            name: 'login',
+            // 传递给云函数的event参数
+            data: {}
+        }).then(res => {
+            cc.log(res);
+            openid = res.result.userInfo.openId;
+
+        })
+        // 判断数据库集合中是否有该用户的记录
+        db.collection('user_login_record').where({
+                _openid: openid
+            })
+            .get()
+            .then(res => {
+                cc.log(res);
+                cc.log(res.data.length);
+                if (res.data.length == 0) {
+                    //add
+                    db.collection('user_login_record').add({
+                            // data 字段表示需新增的 JSON 数据
+                            data: {
+                                ComeSource: cs,
+                                ComeTime: new Date()
+                            }
+                        })
+                        .then(res => {
+                            cc.log("user_login_record add result is " + res);
+                        })
                 }
             })
-            .then(res => {
-                cc.log("user_login_record add result is "+res);
-            })
-        }
-      })
-     
+
     },
 
 
